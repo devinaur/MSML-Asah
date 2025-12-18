@@ -2,11 +2,6 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 import os
 
-BASE_DIR = os.path.dirname(__file__)
-
-INPUT_PATH = os.path.join(BASE_DIR, "..", "phoneprice_raw.csv")
-OUTPUT_PATH = os.path.join(BASE_DIR, "phoneprice_preprocessing.csv")
-
 def preprocessing_data(input_path: str, output_path: str):
 
     # Load dataset
@@ -43,8 +38,17 @@ def preprocessing_data(input_path: str, output_path: str):
 
     return processed_df
 
+#revisi
 if __name__ == "__main__":
+  
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # Ini folder /preprocessing
+    ROOT_DIR = os.path.dirname(BASE_DIR)                # Ini folder root (utama)
 
+    # Definisikan path yang benar-benar tepat
+    INPUT_PATH = os.path.join(ROOT_DIR, "phoneprice_raw.csv")
+    OUTPUT_PATH = os.path.join(BASE_DIR, "phoneprice_preprocessing.csv")
+
+    print(f"Mencari file di: {INPUT_PATH}")
     preprocessing_data(INPUT_PATH, OUTPUT_PATH)
     
-    print("berhasil")
+    print("Berhasil melakukan preprocessing")

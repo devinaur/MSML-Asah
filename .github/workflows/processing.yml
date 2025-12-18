@@ -28,7 +28,7 @@ jobs:
 
     - name: Run preprocessing script
       run: |
-        python preprocessing/automate_Devina-Rahma-Aprilia.py
+        python "preprocessing/automate_Devina-Rahma-Aprilia.py"
 
     - name: Commit and Push Changes
       run: |
@@ -37,9 +37,10 @@ jobs:
         
         git add preprocessing/phoneprice_preprocessing.csv
 
+        # Cek apakah ada perubahan, jika ada maka commit
         if git diff --staged --quiet; then
           echo "No changes to commit."
         else
           git commit -m "Auto-update phoneprice_preprocessing.csv [skip ci]"
-          git push
+          git push origin main
         fi
