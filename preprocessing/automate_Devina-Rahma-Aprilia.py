@@ -2,17 +2,12 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 import os
 
-def preprocessing_data(input_path: str, output_path: str):
-    """
-    Melakukan preprocessing dataset phoneprice secara otomatis
-    berdasarkan hasil eksperimen manual (EDA + preprocessing).
+BASE_DIR = os.path.dirname(__file__)
 
-    Steps:
-    1. Load dataset
-    2. Feature engineering pixel_total
-    3. Scaling fitur numerik
-    4. Save dataset hasil preprocessing
-    """
+INPUT_PATH = os.path.join(BASE_DIR, "..", "phoneprice_raw.csv")
+OUTPUT_PATH = os.path.join(BASE_DIR, "phoneprice_preprocessing.csv")
+
+def preprocessing_data(input_path: str, output_path: str):
 
     # Load dataset
     df = pd.read_csv(input_path)
@@ -49,9 +44,6 @@ def preprocessing_data(input_path: str, output_path: str):
     return processed_df
 
 if __name__ == "__main__":
-
-    INPUT_PATH = "../phoneprice_raw.csv"
-    OUTPUT_PATH = "../preprocessing/phoneprice_preprocessing.csv"
 
     preprocessing_data(INPUT_PATH, OUTPUT_PATH)
     
